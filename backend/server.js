@@ -61,7 +61,7 @@ db.sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}.`);
         // Optional: Function to populate database with initial data
-        // require('./seeders/seedProducts')(); 
+        require('./seeders/seedProducts')(); 
     });
 }).catch(err => {
     console.error('Unable to sync database:', err);
