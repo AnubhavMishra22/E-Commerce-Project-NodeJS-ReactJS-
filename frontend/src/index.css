@@ -1,17 +1,80 @@
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
+@tailwind utilities;
+
+/* Custom styles to ensure gradient background and glass morphism work */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} 
-/* 
-@tailwind base;
-@tailwind components;
-@tailwind utilities; */
+/* Force background color for the main container */
+.min-h-screen {
+  background-color: #87ceeb !important;
+}
+
+/* Force gradient background */
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #f8fafc, #faf5ff, #f1f5f9) !important;
+}
+
+/* Force glass morphism effect */
+.bg-white\/90 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Enhanced shadows */
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.hover\:shadow-2xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Gradient buttons */
+.bg-gradient-to-r {
+  background: linear-gradient(to right, var(--tw-gradient-stops)) !important;
+}
+
+.from-purple-600 {
+  --tw-gradient-from: #9333ea;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(147, 51, 234, 0));
+}
+
+.to-purple-700 {
+  --tw-gradient-to: #7c3aed;
+}
+
+.hover\:from-purple-700:hover {
+  --tw-gradient-from: #7c3aed;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(124, 58, 237, 0));
+}
+
+.hover\:to-purple-800:hover {
+  --tw-gradient-to: #6b21a8;
+}
+
+/* Green gradient for checkout */
+.from-green-600 {
+  --tw-gradient-from: #16a34a;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(22, 163, 74, 0));
+}
+
+.to-green-700 {
+  --tw-gradient-to: #15803d;
+}
+
+.hover\:from-green-700:hover {
+  --tw-gradient-from: #15803d;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(21, 128, 61, 0));
+}
+
+.hover\:to-green-800:hover {
+  --tw-gradient-to: #166534;
+}
