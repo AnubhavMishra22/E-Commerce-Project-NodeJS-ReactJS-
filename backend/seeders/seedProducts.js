@@ -1,17 +1,14 @@
-// =================================================================
-// >> PRODUCT SEEDER (seeders/seedProducts.js)
-// Optional: To populate the products table with initial data.
-// =================================================================
+// PRODUCT SEEDER 
 const db = require('../models');
 const Product = db.Product;
 
 const productsData = [
-    { id: 1, name: 'Wireless Mouse', price: 25.99, image: 'https://placehold.co/400x400/3498db/ffffff?text=Mouse' },
-    { id: 2, name: 'Mechanical Keyboard', price: 79.99, image: 'https://placehold.co/400x400/2ecc71/ffffff?text=Keyboard' },
-    { id: 3, name: '4K Monitor', price: 349.99, image: 'https://placehold.co/400x400/9b59b6/ffffff?text=Monitor' },
-    { id: 4, name: 'Webcam with Ring Light', price: 59.99, image: 'https://placehold.co/400x400/f1c40f/ffffff?text=Webcam' },
-    { id: 5, name: 'USB-C Hub', price: 39.99, image: 'https://placehold.co/400x400/e74c3c/ffffff?text=Hub' },
-    { id: 6, name: 'Noise Cancelling Headphones', price: 199.99, image: 'https://placehold.co/400x400/1abc9c/ffffff?text=Headphones' },
+    { id: 1, name: 'Wireless Mouse', price: 25.99, image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=400&h=400&fit=crop&crop=center' },
+    { id: 2, name: 'Mechanical Keyboard', price: 79.99, image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=400&fit=crop&crop=center' },
+    { id: 3, name: '4K Monitor', price: 349.99, image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=400&fit=crop&crop=center' },
+    { id: 4, name: 'Webcam with Ring Light', price: 59.99, image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=400&fit=crop&crop=center' },
+    { id: 5, name: 'USB-C Hub', price: 39.99, image: 'https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=400&h=400&fit=crop&crop=center' },
+    { id: 6, name: 'Noise Cancelling Headphones', price: 199.99, image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&crop=center' },
 ];
 
 async function seedProducts() {

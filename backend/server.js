@@ -1,4 +1,4 @@
-// This is the main entry point for your Node.js application.
+// main entry point for our application.
 const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
@@ -32,7 +32,7 @@ const sessionStore = new SequelizeStore({
 });
 
 app.use(session({
-    secret: 'a_very_secret_key_for_sessions', // IMPORTANT: Change this and use an environment variable in production
+    secret: 'secret_key_for_sessions', // IMPORTANT: Change this and use an environment variable in production
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
