@@ -1,5 +1,7 @@
 # QuantumCart - E-commerce Platform
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b33424ed-1edc-419c-a57f-42bf66b5cb12/deploy-status)](https://app.netlify.com/projects/quantumcart/deploys)
+
 A modern e-commerce platform built with React frontend and Node.js backend with MySQL database.
 
 ## 🚀 Features
