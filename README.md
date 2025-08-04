@@ -4,6 +4,10 @@
 
 A modern e-commerce platform built with React frontend and Node.js backend with MySQL database.
 
+## 🌐 Live Demo
+
+**Visit the live site:** [quantumcart.netlify.app](https://quantumcart.netlify.app)
+
 ## 🚀 Features
 
 - **Modern UI/UX** with glass morphism effects
