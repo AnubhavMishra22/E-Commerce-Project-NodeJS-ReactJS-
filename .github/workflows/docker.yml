@@ -42,6 +42,8 @@ jobs:
           tags: quantumcart-${{ matrix.service }}:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            REACT_APP_API_URL=http://localhost:5000/api
 
       - name: Test ${{ matrix.service }} image
         run: |
@@ -76,7 +78,7 @@ jobs:
       - name: Test docker-compose build
         run: |
           cd docker
-          docker-compose build --no-cache
+          docker-compose build
 
       - name: Clean up
         if: always()
@@ -115,6 +117,7 @@ jobs:
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
+        if: secrets.DOCKER_USERNAME != ''
         with:
           images: ${{ secrets.DOCKER_USERNAME }}/quantumcart-${{ matrix.service }}
           tags: |
@@ -132,6 +135,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            REACT_APP_API_URL=http://localhost:5000/api
         continue-on-error: true
 
       - name: Image digest

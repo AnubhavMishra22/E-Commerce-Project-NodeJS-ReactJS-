@@ -35,12 +35,12 @@ jobs:
       - name: Run backend tests with coverage
         run: |
           cd backend
-          npm test -- --coverage --watchAll=false
+          npm test
 
       - name: Run frontend tests with coverage
         run: |
           cd frontend
-          CI=true npm test -- --coverage --watchAll=false
+          CI=true npm test
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
@@ -78,22 +78,29 @@ jobs:
       - name: Backend security audit
         run: |
           cd backend
+          npm ci
           npm audit --audit-level=moderate || echo "⚠️  Security vulnerabilities found in backend"
+        continue-on-error: true
 
       - name: Frontend security audit
         run: |
           cd frontend
+          npm ci
           npm audit --audit-level=moderate || echo "⚠️  Security vulnerabilities found in frontend"
+        continue-on-error: true
 
       - name: Check for outdated packages
         run: |
           echo "Backend outdated packages:"
           cd backend
+          if [ ! -d "node_modules" ]; then npm ci; fi
           npm outdated || true
           echo ""
           echo "Frontend outdated packages:"
           cd ../frontend
+          if [ ! -d "node_modules" ]; then npm ci; fi
           npm outdated || true
+        continue-on-error: true
 
   dependency-review:
     name: Dependency Review

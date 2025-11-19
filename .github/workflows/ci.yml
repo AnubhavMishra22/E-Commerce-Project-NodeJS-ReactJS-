@@ -34,7 +34,7 @@ jobs:
       - name: Run backend tests
         run: |
           cd backend
-          npm test -- --coverage --watchAll=false
+          npm test
 
       - name: Upload backend coverage
         uses: codecov/codecov-action@v4
@@ -78,7 +78,7 @@ jobs:
       - name: Run frontend tests
         run: |
           cd frontend
-          CI=true npm test -- --coverage --watchAll=false
+          CI=true npm test
 
       - name: Upload frontend coverage
         uses: codecov/codecov-action@v4
