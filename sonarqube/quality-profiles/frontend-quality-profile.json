@@ -1,0 +1,248 @@
+{
+  "name": "QuantumCart Frontend Quality Profile (React)",
+  "language": "js",
+  "parent": "Sonar way",
+  "rules": [
+    {
+      "key": "javascript:S6481",
+      "priority": "MAJOR",
+      "description": "React components should use a consistent style for defining components"
+    },
+    {
+      "key": "javascript:S6479",
+      "priority": "MAJOR",
+      "description": "React components should not be nested"
+    },
+    {
+      "key": "javascript:S6478",
+      "priority": "MAJOR",
+      "description": "React Context value should be memoized"
+    },
+    {
+      "key": "javascript:S6477",
+      "priority": "CRITICAL",
+      "description": "React props should be read-only"
+    },
+    {
+      "key": "javascript:S6474",
+      "priority": "MAJOR",
+      "description": "React state should be updated correctly"
+    },
+    {
+      "key": "javascript:S6471",
+      "priority": "MAJOR",
+      "description": "React's \"Children.only\" should be used correctly"
+    },
+    {
+      "key": "javascript:S6470",
+      "priority": "MAJOR",
+      "description": "React's \"useState\" hook should not be called conditionally"
+    },
+    {
+      "key": "javascript:S6469",
+      "priority": "CRITICAL",
+      "description": "React's \"useEffect\" should not return anything other than a function or undefined"
+    },
+    {
+      "key": "javascript:S6473",
+      "priority": "MAJOR",
+      "description": "React Hook dependencies should be exhaustive"
+    },
+    {
+      "key": "javascript:S3402",
+      "priority": "MAJOR",
+      "description": "Strings should not be concatenated using '+' in a loop"
+    },
+    {
+      "key": "javascript:S2392",
+      "priority": "MAJOR",
+      "description": "Deprecated React APIs should not be used"
+    },
+    {
+      "key": "javascript:S5260",
+      "priority": "CRITICAL",
+      "description": "React's keys should be unique and stable"
+    },
+    {
+      "key": "javascript:S1186",
+      "priority": "MAJOR",
+      "description": "Functions should not be empty"
+    },
+    {
+      "key": "javascript:S1192",
+      "priority": "MAJOR",
+      "description": "String literals should not be duplicated",
+      "params": {
+        "threshold": "5"
+      }
+    },
+    {
+      "key": "javascript:S3776",
+      "priority": "CRITICAL",
+      "description": "Cognitive Complexity of functions should not be too high",
+      "params": {
+        "threshold": "15"
+      }
+    },
+    {
+      "key": "javascript:S2068",
+      "priority": "BLOCKER",
+      "description": "Credentials should not be hard-coded"
+    },
+    {
+      "key": "javascript:S5131",
+      "priority": "BLOCKER",
+      "description": "Endpoints should not be vulnerable to reflected cross-site scripting (XSS) attacks"
+    },
+    {
+      "key": "javascript:S6268",
+      "priority": "CRITICAL",
+      "description": "\"dangerouslySetInnerHTML\" should not be used"
+    },
+    {
+      "key": "javascript:S6269",
+      "priority": "CRITICAL",
+      "description": "\"target=_blank\" should be avoided"
+    },
+    {
+      "key": "javascript:S6281",
+      "priority": "MAJOR",
+      "description": "React's iframe elements should sandbox their content"
+    },
+    {
+      "key": "javascript:S6327",
+      "priority": "MAJOR",
+      "description": "React event handlers should not be bound in JSX props"
+    },
+    {
+      "key": "javascript:S6328",
+      "priority": "MINOR",
+      "description": "React components should use shorthand syntax"
+    },
+    {
+      "key": "javascript:S6329",
+      "priority": "MAJOR",
+      "description": "Identical JSX elements should be refactored"
+    },
+    {
+      "key": "javascript:S1481",
+      "priority": "MINOR",
+      "description": "Unused local variables should be removed"
+    },
+    {
+      "key": "javascript:S1854",
+      "priority": "MAJOR",
+      "description": "Dead stores should be removed"
+    },
+    {
+      "key": "javascript:S1488",
+      "priority": "MINOR",
+      "description": "Local variables should not be declared and then immediately returned or thrown"
+    },
+    {
+      "key": "javascript:S2699",
+      "priority": "CRITICAL",
+      "description": "Tests should include assertions"
+    },
+    {
+      "key": "javascript:S3358",
+      "priority": "CRITICAL",
+      "description": "Ternary operators should not be nested"
+    },
+    {
+      "key": "javascript:S3504",
+      "priority": "MAJOR",
+      "description": "Object literal shorthand syntax should be used"
+    },
+    {
+      "key": "javascript:S3514",
+      "priority": "MINOR",
+      "description": "\"await\" should only be used with promises"
+    },
+    {
+      "key": "javascript:S3524",
+      "priority": "MINOR",
+      "description": "Braces and parentheses should be used consistently with arrow functions"
+    },
+    {
+      "key": "javascript:S3696",
+      "priority": "MAJOR",
+      "description": "Literals should not be thrown"
+    },
+    {
+      "key": "javascript:S3812",
+      "priority": "MINOR",
+      "description": "\"undefined\" should not be assigned to variables"
+    },
+    {
+      "key": "javascript:S3923",
+      "priority": "CRITICAL",
+      "description": "All branches in a conditional structure should not have exactly the same implementation"
+    },
+    {
+      "key": "javascript:S4123",
+      "priority": "MAJOR",
+      "description": "\"await\" should not be used in loops"
+    },
+    {
+      "key": "javascript:S4143",
+      "priority": "CRITICAL",
+      "description": "Collection elements should not be replaced unconditionally"
+    },
+    {
+      "key": "javascript:S4619",
+      "priority": "MINOR",
+      "description": "Optional boolean parameters should have default value"
+    },
+    {
+      "key": "javascript:S4624",
+      "priority": "MINOR",
+      "description": "Template strings should be used instead of concatenation"
+    },
+    {
+      "key": "javascript:S5247",
+      "priority": "MINOR",
+      "description": "Conditions should not always evaluate to the same value"
+    },
+    {
+      "key": "javascript:S6265",
+      "priority": "MAJOR",
+      "description": "Reducers should always return a new state"
+    },
+    {
+      "key": "javascript:S6266",
+      "priority": "CRITICAL",
+      "description": "React components should specify a key when rendering lists"
+    },
+    {
+      "key": "javascript:S6270",
+      "priority": "MAJOR",
+      "description": "React component props should be validated with PropTypes"
+    },
+    {
+      "key": "javascript:S6308",
+      "priority": "MINOR",
+      "description": "React's \"findDOMNode\" should not be used"
+    },
+    {
+      "key": "javascript:S6317",
+      "priority": "MAJOR",
+      "description": "React's default export should be a component"
+    },
+    {
+      "key": "javascript:S6426",
+      "priority": "MAJOR",
+      "description": "React components should not be defined as arrow functions"
+    },
+    {
+      "key": "javascript:S6428",
+      "priority": "CRITICAL",
+      "description": "React components should not directly modify state"
+    },
+    {
+      "key": "javascript:S6435",
+      "priority": "MAJOR",
+      "description": "React components should have a stable identity"
+    }
+  ]
+}

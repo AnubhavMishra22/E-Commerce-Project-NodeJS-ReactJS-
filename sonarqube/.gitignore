@@ -1,0 +1,17 @@
+# SonarQube working directories
+.sonarqube/
+.scannerwork/
+
+# SonarQube reports
+report-task.txt
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/

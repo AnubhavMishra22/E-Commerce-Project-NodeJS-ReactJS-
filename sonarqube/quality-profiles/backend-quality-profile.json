@@ -1,0 +1,268 @@
+{
+  "name": "QuantumCart Backend Quality Profile",
+  "language": "js",
+  "parent": "Sonar way",
+  "rules": [
+    {
+      "key": "javascript:S1186",
+      "priority": "MAJOR",
+      "description": "Functions should not be empty"
+    },
+    {
+      "key": "javascript:S1854",
+      "priority": "MAJOR",
+      "description": "Dead stores should be removed"
+    },
+    {
+      "key": "javascript:S1192",
+      "priority": "CRITICAL",
+      "description": "String literals should not be duplicated",
+      "params": {
+        "threshold": "3"
+      }
+    },
+    {
+      "key": "javascript:S3776",
+      "priority": "CRITICAL",
+      "description": "Cognitive Complexity of functions should not be too high",
+      "params": {
+        "threshold": "15"
+      }
+    },
+    {
+      "key": "javascript:S3972",
+      "priority": "CRITICAL",
+      "description": "Conditionals should start on new lines"
+    },
+    {
+      "key": "javascript:S2245",
+      "priority": "CRITICAL",
+      "description": "Using pseudorandom number generators (PRNGs) is security-sensitive"
+    },
+    {
+      "key": "javascript:S4502",
+      "priority": "CRITICAL",
+      "description": "Disabling CSRF protections is security-sensitive"
+    },
+    {
+      "key": "javascript:S5122",
+      "priority": "BLOCKER",
+      "description": "Having a permissive Cross-Origin Resource Sharing policy is security-sensitive"
+    },
+    {
+      "key": "javascript:S2068",
+      "priority": "BLOCKER",
+      "description": "Credentials should not be hard-coded"
+    },
+    {
+      "key": "javascript:S5147",
+      "priority": "BLOCKER",
+      "description": "SQL queries should not be vulnerable to injection attacks"
+    },
+    {
+      "key": "javascript:S5131",
+      "priority": "BLOCKER",
+      "description": "Endpoints should not be vulnerable to reflected cross-site scripting (XSS) attacks"
+    },
+    {
+      "key": "javascript:S5144",
+      "priority": "CRITICAL",
+      "description": "Server certificates should be verified during SSL/TLS connections"
+    },
+    {
+      "key": "javascript:S4426",
+      "priority": "CRITICAL",
+      "description": "Cryptographic keys should be robust"
+    },
+    {
+      "key": "javascript:S2612",
+      "priority": "CRITICAL",
+      "description": "Setting loose POSIX file permissions is security-sensitive"
+    },
+    {
+      "key": "javascript:S3330",
+      "priority": "CRITICAL",
+      "description": "Creating cookies without the \"HttpOnly\" flag is security-sensitive"
+    },
+    {
+      "key": "javascript:S4787",
+      "priority": "CRITICAL",
+      "description": "Encrypting data is security-sensitive"
+    },
+    {
+      "key": "javascript:S4823",
+      "priority": "CRITICAL",
+      "description": "Using command line arguments is security-sensitive"
+    },
+    {
+      "key": "javascript:S5042",
+      "priority": "CRITICAL",
+      "description": "Expanding archive files without controlling resource consumption is security-sensitive"
+    },
+    {
+      "key": "javascript:S1134",
+      "priority": "INFO",
+      "description": "Track uses of \"FIXME\" tags"
+    },
+    {
+      "key": "javascript:S1135",
+      "priority": "INFO",
+      "description": "Track uses of \"TODO\" tags"
+    },
+    {
+      "key": "javascript:S125",
+      "priority": "MAJOR",
+      "description": "Sections of code should not be commented out"
+    },
+    {
+      "key": "javascript:S1121",
+      "priority": "MAJOR",
+      "description": "Assignments should not be made from within sub-expressions"
+    },
+    {
+      "key": "javascript:S1219",
+      "priority": "MAJOR",
+      "description": "\"switch\" statements should not contain non-case labels"
+    },
+    {
+      "key": "javascript:S1301",
+      "priority": "MINOR",
+      "description": "\"switch\" statements should have at least 3 \"case\" clauses"
+    },
+    {
+      "key": "javascript:S1438",
+      "priority": "MAJOR",
+      "description": "\"try-catch\" blocks should not be nested"
+    },
+    {
+      "key": "javascript:S1481",
+      "priority": "MINOR",
+      "description": "Unused local variables should be removed"
+    },
+    {
+      "key": "javascript:S1488",
+      "priority": "MINOR",
+      "description": "Local variables should not be declared and then immediately returned or thrown"
+    },
+    {
+      "key": "javascript:S1523",
+      "priority": "CRITICAL",
+      "description": "Code should not be dynamically injected and executed"
+    },
+    {
+      "key": "javascript:S1528",
+      "priority": "CRITICAL",
+      "description": "Array constructors should not be used"
+    },
+    {
+      "key": "javascript:S2137",
+      "priority": "MINOR",
+      "description": "\"return\" and \"yield\" should not be used outside of functions"
+    },
+    {
+      "key": "javascript:S2486",
+      "priority": "CRITICAL",
+      "description": "Generic exceptions should not be ignored"
+    },
+    {
+      "key": "javascript:S2688",
+      "priority": "CRITICAL",
+      "description": "\"NaN\" should not be used in comparisons"
+    },
+    {
+      "key": "javascript:S2699",
+      "priority": "CRITICAL",
+      "description": "Tests should include assertions"
+    },
+    {
+      "key": "javascript:S2814",
+      "priority": "MINOR",
+      "description": "\"export const\" should be avoided"
+    },
+    {
+      "key": "javascript:S3504",
+      "priority": "MAJOR",
+      "description": "Object literal shorthand syntax should be used"
+    },
+    {
+      "key": "javascript:S3513",
+      "priority": "MAJOR",
+      "description": "\"arguments\" should not be accessed directly"
+    },
+    {
+      "key": "javascript:S3514",
+      "priority": "MINOR",
+      "description": "\"await\" should only be used with promises"
+    },
+    {
+      "key": "javascript:S3516",
+      "priority": "CRITICAL",
+      "description": "Function returns should not be invariant"
+    },
+    {
+      "key": "javascript:S3524",
+      "priority": "MINOR",
+      "description": "Braces and parentheses should be used consistently with arrow functions"
+    },
+    {
+      "key": "javascript:S3696",
+      "priority": "MAJOR",
+      "description": "Literals should not be thrown"
+    },
+    {
+      "key": "javascript:S3799",
+      "priority": "CRITICAL",
+      "description": "\"trim\" functions should not be used in a loop"
+    },
+    {
+      "key": "javascript:S3812",
+      "priority": "MINOR",
+      "description": "\"undefined\" should not be assigned to variables"
+    },
+    {
+      "key": "javascript:S3854",
+      "priority": "BLOCKER",
+      "description": "Loops should not be infinite"
+    },
+    {
+      "key": "javascript:S3923",
+      "priority": "CRITICAL",
+      "description": "All branches in a conditional structure should not have exactly the same implementation"
+    },
+    {
+      "key": "javascript:S4123",
+      "priority": "MAJOR",
+      "description": "\"await\" should not be used in loops"
+    },
+    {
+      "key": "javascript:S4143",
+      "priority": "CRITICAL",
+      "description": "Collection elements should not be replaced unconditionally"
+    },
+    {
+      "key": "javascript:S4158",
+      "priority": "CRITICAL",
+      "description": "Empty collections should not be accessed or iterated"
+    },
+    {
+      "key": "javascript:S4322",
+      "priority": "CRITICAL",
+      "description": "Type predicates should be used"
+    },
+    {
+      "key": "javascript:S4619",
+      "priority": "MINOR",
+      "description": "Optional boolean parameters should have default value"
+    },
+    {
+      "key": "javascript:S4623",
+      "priority": "MINOR",
+      "description": "\"indexOf\" checks should not be for positive numbers"
+    },
+    {
+      "key": "javascript:S4624",
+      "priority": "MINOR",
+      "description": "Template strings should be used instead of concatenation"
+    }
+  ]
+}
