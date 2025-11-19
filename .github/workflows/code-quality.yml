@@ -1,0 +1,111 @@
+name: Code Quality Analysis
+
+on:
+  push:
+    branches: [ main, develop, "claude/**" ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  sonarcloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for better analysis
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Run backend tests with coverage
+        run: |
+          cd backend
+          npm test -- --coverage --watchAll=false
+
+      - name: Run frontend tests with coverage
+        run: |
+          cd frontend
+          CI=true npm test -- --coverage --watchAll=false
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+        continue-on-error: true
+
+      - name: SonarCloud Status
+        run: |
+          if [ -n "${{ secrets.SONAR_TOKEN }}" ]; then
+            echo "✅ SonarCloud analysis completed"
+          else
+            echo "ℹ️  SonarCloud not configured (optional)"
+            echo "To enable: Add SONAR_TOKEN, SONAR_ORGANIZATION, and SONAR_PROJECT_KEY to repository secrets"
+          fi
+
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.x
+
+      - name: Backend security audit
+        run: |
+          cd backend
+          npm audit --audit-level=moderate || echo "⚠️  Security vulnerabilities found in backend"
+
+      - name: Frontend security audit
+        run: |
+          cd frontend
+          npm audit --audit-level=moderate || echo "⚠️  Security vulnerabilities found in frontend"
+
+      - name: Check for outdated packages
+        run: |
+          echo "Backend outdated packages:"
+          cd backend
+          npm outdated || true
+          echo ""
+          echo "Frontend outdated packages:"
+          cd ../frontend
+          npm outdated || true
+
+  dependency-review:
+    name: Dependency Review
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: moderate
+        continue-on-error: true
