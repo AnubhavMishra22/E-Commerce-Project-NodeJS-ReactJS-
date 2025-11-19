@@ -2,11 +2,12 @@ import React, { useState, useEffect, createContext, useContext } from 'react';
 import axios from 'axios';
 
 // Configure axios base URL for backend
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 axios.defaults.baseURL = API_BASE_URL;
 axios.defaults.withCredentials = true; // For session cookies
 
 // Backend API connection configured above
+console.log('API Base URL:', API_BASE_URL);
 
 const AuthContext = createContext(null);
 const CartContext = createContext(null);

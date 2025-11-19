@@ -65,7 +65,7 @@ A modern e-commerce platform built with React frontend and Node.js backend with 
    npm install
    ```
 
-4. **Configure Database**
+4. **Configure Backend Environment**
    - Create a MySQL database named `ecommerce_db`
    - Create a `.env` file in the `backend` directory with the following variables:
      ```
@@ -77,13 +77,20 @@ A modern e-commerce platform built with React frontend and Node.js backend with 
      SESSION_SECRET=your_secure_secret_key
      ```
 
-5. **Start Backend Server**
+5. **Configure Frontend Environment** (Optional)
+   - Create a `.env` file in the `frontend` directory:
+     ```
+     REACT_APP_API_URL=http://localhost:5000/api
+     ```
+   - Note: If not set, the app defaults to `http://localhost:5000/api`
+
+6. **Start Backend Server**
    ```bash
    cd backend
    npm start
    ```
 
-6. **Start Frontend Development Server**
+7. **Start Frontend Development Server**
    ```bash
    cd frontend
    npm start
@@ -135,8 +142,8 @@ ecommerce-app/
 
 ## 🔧 Configuration
 
-### Environment Variables
-The backend uses environment variables for configuration. Create a `.env` file in the `backend` directory:
+### Backend Environment Variables
+Create a `.env` file in the `backend` directory:
 
 ```env
 PORT=5000
@@ -148,7 +155,16 @@ SESSION_SECRET=your_secure_secret_key
 NODE_ENV=development
 ```
 
-**Important**: Never commit the `.env` file to version control. It's already included in `.gitignore`.
+### Frontend Environment Variables
+Create a `.env` file in the `frontend` directory (optional):
+
+```env
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+**Note**: The frontend defaults to `http://localhost:5000/api` if `REACT_APP_API_URL` is not set.
+
+**Important**: Never commit `.env` files to version control. They're already included in `.gitignore`. Use `.env.example` files as templates.
 
 ## 🎨 Features
 
