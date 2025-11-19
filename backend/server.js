@@ -1,8 +1,10 @@
 // main entry point for our application.
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
+const rateLimit = require('express-rate-limit');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const db = require('./models'); // Imports the Sequelize instance and models
 const authRoutes = require('./routes/auth');
@@ -32,12 +34,14 @@ const sessionStore = new SequelizeStore({
 });
 
 app.use(session({
-    secret: 'secret_key_for_sessions', // IMPORTANT: Change this and use an environment variable in production
+    secret: process.env.SESSION_SECRET || 'secret_key_for_sessions',
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 // 24 hours
+        maxAge: 1000 * 60 * 60 * 24, // 24 hours
+        httpOnly: true, // Prevents client-side JS from reading the cookie
+        secure: process.env.NODE_ENV === 'production' // Use secure cookies in production
     }
 }));
 sessionStore.sync(); // Creates the 'Sessions' table in the database if it doesn't exist.
@@ -46,11 +50,30 @@ sessionStore.sync(); // Creates the 'Sessions' table in the database if it doesn
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Rate Limiting: Prevent brute force attacks on authentication endpoints
+const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 5, // Limit each IP to 5 requests per windowMs
+    message: 'Too many login attempts, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
 // --- API Routes ---
 // The server uses these modular route handlers.
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authLimiter, authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+
+// --- Error Handler Middleware ---
+// Global error handler - must be after all routes
+app.use((err, req, res, next) => {
+    console.error('Error:', err.stack);
+    res.status(err.status || 500).json({
+        message: err.message || 'Internal server error',
+        error: process.env.NODE_ENV === 'development' ? err : {}
+    });
+});
 
 // --- Database Sync and Server Start ---
 // This synchronizes all the defined models with the database and then starts the server.

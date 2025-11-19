@@ -22,6 +22,14 @@ module.exports = (sequelize, DataTypes) => {
         user.password = await bcrypt.hash(user.password, salt);
     });
 
+    // Hook: Automatically hashes the password before a user is updated.
+    User.beforeUpdate(async (user, options) => {
+        if (user.changed('password')) {
+            const salt = await bcrypt.genSalt(10);
+            user.password = await bcrypt.hash(user.password, salt);
+        }
+    });
+
     // Instance Method: To validate a password during login.
     User.prototype.validPassword = async function(password) {
         return await bcrypt.compare(password, this.password);

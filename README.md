@@ -33,6 +33,10 @@ A modern e-commerce platform built with React frontend and Node.js backend with 
 - Sequelize ORM
 - Passport.js for authentication
 - CORS enabled
+- Express Validator for input validation
+- Express Rate Limit for brute-force protection
+- bcryptjs for password hashing
+- Environment-based configuration
 
 ## 📦 Installation
 
@@ -63,7 +67,15 @@ A modern e-commerce platform built with React frontend and Node.js backend with 
 
 4. **Configure Database**
    - Create a MySQL database named `ecommerce_db`
-   - Update database credentials in `backend/config/database.js`
+   - Create a `.env` file in the `backend` directory with the following variables:
+     ```
+     PORT=5000
+     DB_HOST=localhost
+     DB_USER=root
+     DB_PASS=your_password
+     DB_NAME=ecommerce_db
+     SESSION_SECRET=your_secure_secret_key
+     ```
 
 5. **Start Backend Server**
    ```bash
@@ -123,17 +135,20 @@ ecommerce-app/
 
 ## 🔧 Configuration
 
-### Database Configuration
-Update `backend/config/database.js` with your MySQL credentials:
-```javascript
-module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "your_password",
-    DB: "ecommerce_db",
-    dialect: "mysql"
-};
+### Environment Variables
+The backend uses environment variables for configuration. Create a `.env` file in the `backend` directory:
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=your_password
+DB_NAME=ecommerce_db
+SESSION_SECRET=your_secure_secret_key
+NODE_ENV=development
 ```
+
+**Important**: Never commit the `.env` file to version control. It's already included in `.gitignore`.
 
 ## 🎨 Features
 

@@ -1,11 +1,28 @@
 const express = require('express');
 const passport = require('passport');
+const { body, validationResult } = require('express-validator');
 const db = require('../models');
 const User = db.User;
 const router = express.Router();
 
+// Validation middleware
+const validateRegistration = [
+    body('email').isEmail().normalizeEmail().withMessage('Please provide a valid email'),
+    body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
+];
+
+const validateLogin = [
+    body('email').isEmail().normalizeEmail().withMessage('Please provide a valid email'),
+    body('password').notEmpty().withMessage('Password is required')
+];
+
 // POST /api/auth/register
-router.post('/register', async (req, res) => {
+router.post('/register', validateRegistration, async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const { email, password } = req.body;
     try {
         const existingUser = await User.findOne({ where: { email } });
@@ -23,10 +40,21 @@ router.post('/register', async (req, res) => {
 });
 
 // POST /api/auth/login
-router.post('/login', passport.authenticate('local'), (req, res) => {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.json({ id: req.user.id, email: req.user.email });
+router.post('/login', validateLogin, (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    passport.authenticate('local', (err, user, info) => {
+        if (err) return next(err);
+        if (!user) return res.status(401).json({ message: info.message || 'Authentication failed' });
+
+        req.login(user, (err) => {
+            if (err) return next(err);
+            res.json({ id: user.id, email: user.email });
+        });
+    })(req, res, next);
 });
 
 // POST /api/auth/logout
