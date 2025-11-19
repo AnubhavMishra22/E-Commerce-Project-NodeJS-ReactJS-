@@ -4,6 +4,9 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
+// Set Jest timeout to 10 seconds for slow CI environments
+jest.setTimeout(10000);
+
 // Mock axios for all tests
 jest.mock('axios');
 
